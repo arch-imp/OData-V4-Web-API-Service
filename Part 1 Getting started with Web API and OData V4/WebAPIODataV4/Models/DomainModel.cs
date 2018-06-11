@@ -10,6 +10,7 @@ namespace WebAPIODataV4.Models
         public DomainModel()
             : base("name=DomainModel")
         {
+            Database.SetInitializer<DomainModel>(null);
         }
 
         public virtual DbSet<Address> Address { get; set; }
