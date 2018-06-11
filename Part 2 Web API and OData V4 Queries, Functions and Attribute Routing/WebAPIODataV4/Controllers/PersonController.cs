@@ -15,6 +15,7 @@ namespace WebAPIODataV4.Controllers
             return Ok(_db.Person.AsQueryable());
         }
 
+        [EnableQuery]
         public IHttpActionResult Get([FromODataUri] int key)
         {
             return Ok(_db.Person.SingleOrDefault(t => t.BusinessEntityID == key));
