@@ -20,6 +20,7 @@ namespace WebAPIODataV4
                 defaults: new { id = RouteParameter.Optional }
             );
 
+            config.Count().Filter().OrderBy().Expand().Select().MaxTop(null);
             config.MapODataServiceRoute("odata", "odata", model: GetModel());
         }
 
