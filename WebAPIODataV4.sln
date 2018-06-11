@@ -3,9 +3,26 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27703.2026
 MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Part 1 Getting started with Web API and OData V4", "Part 1 Getting started with Web API and OData V4", "{932302F8-3863-4888-906D-1C8961266104}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebAPIODataV4-Part1", "Part 1 Getting started with Web API and OData V4\WebAPIODataV4\WebAPIODataV4-Part1.csproj", "{A166FEAB-5063-4F8B-99B4-DBD55FFCCB39}"
+EndProject
 Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A166FEAB-5063-4F8B-99B4-DBD55FFCCB39}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A166FEAB-5063-4F8B-99B4-DBD55FFCCB39}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A166FEAB-5063-4F8B-99B4-DBD55FFCCB39}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A166FEAB-5063-4F8B-99B4-DBD55FFCCB39}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{A166FEAB-5063-4F8B-99B4-DBD55FFCCB39} = {932302F8-3863-4888-906D-1C8961266104}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {970B5E2A-FC36-4680-9EA8-2747811DC4E8}
