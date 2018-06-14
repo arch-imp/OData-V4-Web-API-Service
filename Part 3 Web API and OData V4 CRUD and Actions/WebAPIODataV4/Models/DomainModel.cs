@@ -1,9 +1,6 @@
 namespace WebAPIODataV4.Models
 {
-    using System;
     using System.Data.Entity;
-    using System.ComponentModel.DataAnnotations.Schema;
-    using System.Linq;
 
     public partial class DomainModel : DbContext
     {
@@ -29,6 +26,9 @@ namespace WebAPIODataV4.Models
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<ContactType>().Ignore(c => c.ModifiedDate);
+            modelBuilder.Entity<ContactType>().Property(Models.ContactType.ContactTypeExpressions.ModifiedDate).HasColumnName("ModifiedDate");
+
             modelBuilder.Entity<Address>()
                 .HasMany(e => e.BusinessEntityAddress)
                 .WithRequired(e => e.Address)
