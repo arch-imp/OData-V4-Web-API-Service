@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Data.Entity.Migrations;
+using System.Linq;
 using System.Web.Http;
 using System.Web.OData;
 using System.Web.OData.Routing;
@@ -23,6 +24,21 @@ namespace WebAPIODataV4.Controllers
         public IHttpActionResult Get([FromODataUri] int key)
         {
             return Ok(_db.ContactType.Find(key));
+        }
+
+        [ODataRoute()]
+        [HttpPost]
+        [EnableQuery]
+        public IHttpActionResult Post(ContactType contactType)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            _db.ContactType.AddOrUpdate(contactType);
+            _db.SaveChanges();
+            return Created(contactType);
         }
 
         protected override void Dispose(bool disposing)
