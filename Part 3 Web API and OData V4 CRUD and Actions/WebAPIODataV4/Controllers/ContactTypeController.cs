@@ -1,5 +1,6 @@
 ﻿using System.Data.Entity.Migrations;
 using System.Linq;
+using System.Net;
 using System.Web.Http;
 using System.Web.OData;
 using System.Web.OData.Routing;
@@ -60,6 +61,16 @@ namespace WebAPIODataV4.Controllers
             _db.SaveChanges();
 
             return Updated(contactType);
+        }
+
+        [ODataRoute]
+        [HttpDelete]
+        [EnableQuery]
+        public void Delete([FromODataUri] int key)
+        {
+            var entityInDb = _db.ContactType.SingleOrDefault(t => t.ContactTypeID == key);
+            _db.ContactType.Remove(entityInDb);
+            _db.SaveChanges();
         }
 
         protected override void Dispose(bool disposing)
