@@ -41,6 +41,27 @@ namespace WebAPIODataV4.Controllers
             return Created(contactType);
         }
 
+        [ODataRoute("({key})")]
+        [HttpPut]
+        [EnableQuery]
+        public IHttpActionResult Put([FromODataUri] int key, ContactType contactType)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            if (key != contactType.ContactTypeID)
+            {
+                return BadRequest();
+            }
+
+            _db.ContactType.AddOrUpdate(contactType);
+            _db.SaveChanges();
+
+            return Updated(contactType);
+        }
+
         protected override void Dispose(bool disposing)
         {
             _db.Dispose();
