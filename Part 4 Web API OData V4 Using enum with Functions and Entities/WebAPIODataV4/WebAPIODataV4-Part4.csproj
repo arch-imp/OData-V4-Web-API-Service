@@ -133,6 +133,7 @@
     <Compile Include="Models\CountryRegion.cs" />
     <Compile Include="Models\DomainModel.cs" />
     <Compile Include="Models\EmailAddress.cs" />
+    <Compile Include="Models\EntityWithEnum.cs" />
     <Compile Include="Models\Password.cs" />
     <Compile Include="Models\Person.cs" />
     <Compile Include="Models\PersonPhone.cs" />
