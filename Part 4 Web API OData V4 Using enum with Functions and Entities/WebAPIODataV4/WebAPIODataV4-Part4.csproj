@@ -119,6 +119,7 @@
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\ContactTypeController.cs" />
+    <Compile Include="Controllers\EntityWithTypeController.cs" />
     <Compile Include="Controllers\PersonController.cs" />
     <Compile Include="Controllers\PersonPhoneController.cs" />
     <Compile Include="Global.asax.cs">
