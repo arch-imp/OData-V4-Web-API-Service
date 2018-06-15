@@ -104,6 +104,32 @@ namespace WebAPIODataV4.Controllers
             return Updated(contactType);
         }
 
+        [ODataRoute("Default.ChangePersonStatus")]
+        [HttpPost]
+        [EnableQuery]
+        public IHttpActionResult ChangePersonStatus([FromODataUri] int key, ODataActionParameters parameters)
+        {
+            if (ModelState.IsValid)
+            {
+                var level = parameters["Level"];
+                // SAVE THIS TO THE DATABASE OR WHATEVER....
+            }
+            return Ok(true);
+        }
+
+        [ODataRoute("Default.ChangePersonStatus")]
+        [HttpPost]
+        [EnableQuery]
+        public IHttpActionResult ChangePersonStatus(ODataActionParameters parameters)
+        {
+            if (ModelState.IsValid)
+            {
+                var level = parameters["Level"];
+                // SAVE THIS TO THE DATABASE OR WHATEVER....
+            }
+            return Ok(true);
+        }
+
         protected override void Dispose(bool disposing)
         {
             _db.Dispose();
