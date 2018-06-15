@@ -42,6 +42,8 @@ namespace WebAPIODataV4
             builder.EntitySet<PhoneNumberType>("PhoneNumberType");
             builder.EntitySet<StateProvince>("StateProvince");
 
+            builder.EntitySet<EntityWithEnum>("EntityWithEnum");
+
             EntitySetConfiguration<ContactType> contactType = builder.EntitySet<ContactType>("ContactType");
             var actionY = contactType.EntityType.Action("ChangePersonStatus");
             actionY.Parameter<string>("Level");
