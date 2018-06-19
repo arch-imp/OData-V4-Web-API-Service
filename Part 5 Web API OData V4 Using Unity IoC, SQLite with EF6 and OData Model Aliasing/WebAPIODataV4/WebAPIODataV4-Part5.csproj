@@ -136,6 +136,7 @@
     </Compile>
     <Compile Include="Models\Address.cs" />
     <Compile Include="Models\AddressType.cs" />
+    <Compile Include="Models\AnimalType.cs" />
     <Compile Include="Models\BusinessEntity.cs" />
     <Compile Include="Models\BusinessEntityAddress.cs" />
     <Compile Include="Models\BusinessEntityContact.cs" />
@@ -144,10 +145,12 @@
     <Compile Include="Models\DomainModel.cs" />
     <Compile Include="Models\EmailAddress.cs" />
     <Compile Include="Models\EntityWithEnum.cs" />
+    <Compile Include="Models\EventData.cs" />
     <Compile Include="Models\Password.cs" />
     <Compile Include="Models\Person.cs" />
     <Compile Include="Models\PersonPhone.cs" />
     <Compile Include="Models\PhoneNumberType.cs" />
+    <Compile Include="Models\SqliteContext.cs" />
     <Compile Include="Models\StateProvince.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
