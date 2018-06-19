@@ -37,5 +37,18 @@ namespace WebAPIODataV4.Controllers
 
             return BadRequest("key does not key");
         }
+
+        [HttpGet]
+        [EnableQuery(PageSize = 20)]
+        [ODataRoute("Default.PersonSearchPerPhoneType(PhoneNumberTypeEnum={phoneNumberTypeEnum})")]
+        public IHttpActionResult PersonSearchPerPhoneType([FromODataUri] PhoneNumberTypeEnum phoneNumberTypeEnum)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            return Ok(someData.Where(t => t.PhoneNumberType.Equals(phoneNumberTypeEnum)));
+        }
     }
 }

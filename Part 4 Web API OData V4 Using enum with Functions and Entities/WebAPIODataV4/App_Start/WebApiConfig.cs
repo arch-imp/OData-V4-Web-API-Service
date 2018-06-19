@@ -42,7 +42,14 @@ namespace WebAPIODataV4
             builder.EntitySet<PhoneNumberType>("PhoneNumberType");
             builder.EntitySet<StateProvince>("StateProvince");
 
-            builder.EntitySet<EntityWithEnum>("EntityWithEnum");
+            EntitySetConfiguration<EntityWithEnum> entitesWithEnum
+                = builder.EntitySet<EntityWithEnum>("EntityWithEnum");
+
+            FunctionConfiguration functionEntitesWithEnum
+                = entitesWithEnum.EntityType.Collection.Function("PersonSearchPerPhoneType");
+
+            functionEntitesWithEnum.Parameter<PhoneNumberTypeEnum>("PhoneNumberTypeEnum");
+            functionEntitesWithEnum.ReturnsCollectionFromEntitySet<EntityWithEnum>("EntityWithEnum");
 
             EntitySetConfiguration<ContactType> contactType = builder.EntitySet<ContactType>("ContactType");
             var actionY = contactType.EntityType.Action("ChangePersonStatus");
