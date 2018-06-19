@@ -19,6 +19,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Part 4 Web API OData V4 Usi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebAPIODataV4-Part4", "Part 4 Web API OData V4 Using enum with Functions and Entities\WebAPIODataV4\WebAPIODataV4-Part4.csproj", "{EBBB6FC8-7A98-4AC7-8E78-389264477114}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProductService", "Part 4 Web API OData V4 Using enum with Functions and Entities\ProductService\ProductService.csproj", "{A21EF9B3-F554-4899-B835-B16E38FC0AFB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -41,6 +43,10 @@ Global
 		{EBBB6FC8-7A98-4AC7-8E78-389264477114}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EBBB6FC8-7A98-4AC7-8E78-389264477114}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EBBB6FC8-7A98-4AC7-8E78-389264477114}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A21EF9B3-F554-4899-B835-B16E38FC0AFB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A21EF9B3-F554-4899-B835-B16E38FC0AFB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A21EF9B3-F554-4899-B835-B16E38FC0AFB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A21EF9B3-F554-4899-B835-B16E38FC0AFB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -50,6 +56,7 @@ Global
 		{CCB3F343-D453-4509-B71D-D00AD1A449CC} = {CF214154-988C-41FD-B25F-661307C6ECCC}
 		{EECBF74A-9EFF-4D6E-BDFE-80B3BC8E166C} = {6FA853A5-399F-46F0-8E22-901E929E454E}
 		{EBBB6FC8-7A98-4AC7-8E78-389264477114} = {6B33B1E0-6451-47A4-8F0A-049041B21300}
+		{A21EF9B3-F554-4899-B835-B16E38FC0AFB} = {6B33B1E0-6451-47A4-8F0A-049041B21300}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {970B5E2A-FC36-4680-9EA8-2747811DC4E8}
