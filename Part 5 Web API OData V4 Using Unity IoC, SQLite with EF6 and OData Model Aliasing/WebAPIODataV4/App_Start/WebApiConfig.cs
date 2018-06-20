@@ -72,6 +72,9 @@ namespace WebAPIODataV4
             FunctionConfiguration myFirstFunction = persons.EntityType.Collection.Function("MyFirstFunction");
             myFirstFunction.ReturnsCollectionFromEntitySet<Person>("Person");
 
+            builder.EntitySet<AnimalType>("AnimalType");
+            builder.EntitySet<EventData>("EventData");
+
             return builder.GetEdmModel();
         }
 

@@ -149,7 +149,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\UnityConfig.cs" />
@@ -158,6 +160,7 @@
     <Compile Include="App_Start\WebApiUnityActionFilterProvider.cs" />
     <Compile Include="Controllers\ContactTypeController.cs" />
     <Compile Include="Controllers\EntityWithTypeController.cs" />
+    <Compile Include="Controllers\EventDataController.cs" />
     <Compile Include="Controllers\PersonController.cs" />
     <Compile Include="Controllers\PersonPhoneController.cs" />
     <Compile Include="Models\Address.cs" />
