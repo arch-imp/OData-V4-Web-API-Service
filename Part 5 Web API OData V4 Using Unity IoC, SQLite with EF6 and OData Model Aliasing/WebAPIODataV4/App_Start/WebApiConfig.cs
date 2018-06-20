@@ -1,18 +1,23 @@
-﻿using System.Web.Http;
+﻿using System.Linq;
+using System.Web.Http;
+using System.Web.Http.Filters;
 using System.Web.OData.Builder;
 using System.Web.OData.Extensions;
+using Microsoft.OData.Edm;
+using Unity.AspNet.WebApi;
 using WebAPIODataV4.Models;
 
 namespace WebAPIODataV4
 {
     public static class WebApiConfig
     {
-        public static void Register(HttpConfiguration config)
+        public static HttpConfiguration Register()
         {
-            // Web API configuration and services
-
-            // Web API routes
+            var config = new HttpConfiguration();
             config.MapHttpAttributeRoutes();
+
+            config.DependencyResolver = new UnityDependencyResolver(UnityConfig.Container);
+            RegisterFilterProviders(config);
 
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",
@@ -22,9 +27,11 @@ namespace WebAPIODataV4
 
             config.Count().Filter().OrderBy().Expand().Select().MaxTop(null);
             config.MapODataServiceRoute("odata", "odata", model: GetModel());
+
+            return config;
         }
 
-        public static Microsoft.OData.Edm.IEdmModel GetModel()
+        public static IEdmModel GetModel()
         {
             ODataModelBuilder builder = new ODataConventionModelBuilder();
 
@@ -66,6 +73,14 @@ namespace WebAPIODataV4
             myFirstFunction.ReturnsCollectionFromEntitySet<Person>("Person");
 
             return builder.GetEdmModel();
+        }
+
+        private static void RegisterFilterProviders(HttpConfiguration config)
+        {
+            var providers = config.Services.GetFilterProviders().ToList();
+            config.Services.Add(typeof(System.Web.Http.Filters.IFilterProvider), new WebApiUnityActionFilterProvider(UnityConfig.Container));
+            var defaultprovider = providers.First(p => p is ActionDescriptorFilterProvider);
+            config.Services.Remove(typeof(System.Web.Http.Filters.IFilterProvider), defaultprovider);
         }
     }
 }

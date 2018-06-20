@@ -1,6 +1,7 @@
 using System;
 
 using Unity;
+using WebAPIODataV4.Models;
 
 namespace WebAPIODataV4
 {
@@ -42,6 +43,8 @@ namespace WebAPIODataV4
 
             // TODO: Register your type's mappings here.
             // container.RegisterType<IProductRepository, ProductRepository>();
+
+            container.RegisterType<SqliteContext, SqliteContext>();
         }
     }
 }
