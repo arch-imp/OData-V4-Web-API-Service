@@ -24,6 +24,12 @@ namespace WebAPIODataV4.Controllers
             return Ok(_sqliteContext.EventDataEntities.AsQueryable());
         }
 
+        [EnableQuery(PageSize = 20)]
+        public IHttpActionResult Get([FromODataUri] int key)
+        {
+            return Ok(_sqliteContext.EventDataEntities.Find(key));
+        }
+
         [HttpPost]
         [ODataRoute("EventData")]
         public async Task<IHttpActionResult> CreateEventData(EventData eventData)
@@ -37,12 +43,6 @@ namespace WebAPIODataV4.Controllers
             await _sqliteContext.SaveChangesAsync();
 
             return Created(eventData);
-        }
-
-        [EnableQuery(PageSize = 20)]
-        public IHttpActionResult Get([FromODataUri] int key)
-        {
-            return Ok(_sqliteContext.EventDataEntities.Find(key));
         }
 
         [HttpPut]

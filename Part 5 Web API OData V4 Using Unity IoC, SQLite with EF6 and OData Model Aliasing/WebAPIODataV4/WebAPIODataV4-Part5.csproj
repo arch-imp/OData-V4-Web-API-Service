@@ -158,6 +158,7 @@
     <Compile Include="App_Start\UnityWebApiActivator.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="App_Start\WebApiUnityActionFilterProvider.cs" />
+    <Compile Include="Controllers\AnimalTypeController.cs" />
     <Compile Include="Controllers\ContactTypeController.cs" />
     <Compile Include="Controllers\EntityWithTypeController.cs" />
     <Compile Include="Controllers\EventDataController.cs" />
