@@ -5,9 +5,9 @@ using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.OData;
 using System.Web.OData.Routing;
-using WebAPIODataV4SQLite.DomainModel;
+using WebAPIODataV4.Models;
 
-namespace WebAPIODataV4SQLite.Controllers
+namespace WebAPIODataV4.Controllers
 {
     public class AnimalTypeController : ODataController
     {
