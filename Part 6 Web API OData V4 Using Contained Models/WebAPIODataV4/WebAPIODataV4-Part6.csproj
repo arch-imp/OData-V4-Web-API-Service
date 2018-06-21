@@ -180,6 +180,8 @@
     <Compile Include="Models\Person.cs" />
     <Compile Include="Models\PersonPhone.cs" />
     <Compile Include="Models\PhoneNumberType.cs" />
+    <Compile Include="Models\Player.cs" />
+    <Compile Include="Models\PlayerStats.cs" />
     <Compile Include="Models\SqliteContext.cs" />
     <Compile Include="Models\StateProvince.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
