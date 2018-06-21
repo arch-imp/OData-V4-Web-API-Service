@@ -75,6 +75,9 @@ namespace WebAPIODataV4
             builder.EntitySet<AnimalType>("AnimalType");
             builder.EntitySet<EventData>("EventData");
 
+            builder.EntitySet<Player>("Player");
+            builder.EntityType<PlayerStats>();
+
             return builder.GetEdmModel();
         }
 
