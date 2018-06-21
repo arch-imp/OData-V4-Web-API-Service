@@ -13,6 +13,8 @@ namespace WebAPIODataV4.Models
 
         public DbSet<EventData> EventDataEntities { get; set; }
         public DbSet<AnimalType> AnimalTypeEntities { get; set; }
+        public DbSet<Player> PlayerEntities { get; set; }
+        public DbSet<PlayerStats> PlayerStatsEntities { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
