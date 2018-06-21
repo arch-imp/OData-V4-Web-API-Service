@@ -164,6 +164,7 @@
     <Compile Include="Controllers\EventDataController.cs" />
     <Compile Include="Controllers\PersonController.cs" />
     <Compile Include="Controllers\PersonPhoneController.cs" />
+    <Compile Include="Controllers\PlayerController.cs" />
     <Compile Include="Models\Address.cs" />
     <Compile Include="Models\AddressType.cs" />
     <Compile Include="Models\AnimalType.cs" />
