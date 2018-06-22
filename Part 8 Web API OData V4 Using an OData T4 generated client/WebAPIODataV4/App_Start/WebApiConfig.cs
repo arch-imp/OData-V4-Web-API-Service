@@ -72,6 +72,7 @@ namespace WebAPIODataV4
             FunctionConfiguration myFirstFunction = persons.EntityType.Collection.Function("MyFirstFunction");
             myFirstFunction.ReturnsCollectionFromEntitySet<Person>("Person");
 
+            builder.ContainerName = "SqliteContext";
             builder.EntitySet<AnimalType>("AnimalType");
             builder.EntitySet<EventData>("EventData");
 
