@@ -183,6 +183,8 @@
     <Compile Include="Models\PhoneNumberType.cs" />
     <Compile Include="Models\Player.cs" />
     <Compile Include="Models\PlayerStats.cs" />
+    <Compile Include="Models\SkillLevel.cs" />
+    <Compile Include="Models\SkillLevels.cs" />
     <Compile Include="Models\SqliteContext.cs" />
     <Compile Include="Models\StateProvince.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
