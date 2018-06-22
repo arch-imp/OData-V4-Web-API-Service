@@ -1,0 +1,354 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="4.0" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+    <edmx:DataServices>
+        <Schema Namespace="WebAPIODataV4.Models" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+            <EntityType Name="Address">
+                <Key>
+                    <PropertyRef Name="AddressID" />
+                </Key>
+                <Property Name="AddressID" Type="Edm.Int32" Nullable="false" />
+                <Property Name="AddressLine1" Type="Edm.String" Nullable="false" />
+                <Property Name="AddressLine2" Type="Edm.String" />
+                <Property Name="City" Type="Edm.String" Nullable="false" />
+                <Property Name="StateProvinceID" Type="Edm.Int32" />
+                <Property Name="PostalCode" Type="Edm.String" Nullable="false" />
+                <Property Name="SpatialLocation" Type="System.Data.Entity.Spatial.DbGeography" />
+                <Property Name="rowguid" Type="Edm.Guid" Nullable="false" />
+                <Property Name="ModifiedDate" Type="Edm.DateTimeOffset" Nullable="false" />
+                <NavigationProperty Name="StateProvince" Type="WebAPIODataV4.Models.StateProvince">
+                    <ReferentialConstraint Property="StateProvinceID" ReferencedProperty="StateProvinceID" />
+                </NavigationProperty>
+                <NavigationProperty Name="BusinessEntityAddress" Type="Collection(WebAPIODataV4.Models.BusinessEntityAddress)" />
+            </EntityType>
+            <EntityType Name="AddressType">
+                <Key>
+                    <PropertyRef Name="AddressTypeID" />
+                </Key>
+                <Property Name="AddressTypeID" Type="Edm.Int32" Nullable="false" />
+                <Property Name="Name" Type="Edm.String" Nullable="false" />
+                <Property Name="rowguid" Type="Edm.Guid" Nullable="false" />
+                <Property Name="ModifiedDate" Type="Edm.DateTimeOffset" Nullable="false" />
+                <NavigationProperty Name="BusinessEntityAddress" Type="Collection(WebAPIODataV4.Models.BusinessEntityAddress)" />
+            </EntityType>
+            <EntityType Name="BusinessEntity">
+                <Key>
+                    <PropertyRef Name="BusinessEntityID" />
+                </Key>
+                <Property Name="BusinessEntityID" Type="Edm.Int32" Nullable="false" />
+                <Property Name="rowguid" Type="Edm.Guid" Nullable="false" />
+                <Property Name="ModifiedDate" Type="Edm.DateTimeOffset" Nullable="false" />
+                <NavigationProperty Name="BusinessEntityAddress" Type="Collection(WebAPIODataV4.Models.BusinessEntityAddress)" />
+                <NavigationProperty Name="BusinessEntityContact" Type="Collection(WebAPIODataV4.Models.BusinessEntityContact)" />
+                <NavigationProperty Name="Person" Type="WebAPIODataV4.Models.Person" />
+            </EntityType>
+            <EntityType Name="BusinessEntityAddress">
+                <Key>
+                    <PropertyRef Name="BusinessEntityID" />
+                    <PropertyRef Name="AddressID" />
+                    <PropertyRef Name="AddressTypeID" />
+                </Key>
+                <Property Name="BusinessEntityID" Type="Edm.Int32" />
+                <Property Name="AddressID" Type="Edm.Int32" />
+                <Property Name="AddressTypeID" Type="Edm.Int32" />
+                <Property Name="rowguid" Type="Edm.Guid" Nullable="false" />
+                <Property Name="ModifiedDate" Type="Edm.DateTimeOffset" Nullable="false" />
+                <NavigationProperty Name="Address" Type="WebAPIODataV4.Models.Address">
+                    <ReferentialConstraint Property="AddressID" ReferencedProperty="AddressID" />
+                </NavigationProperty>
+                <NavigationProperty Name="AddressType" Type="WebAPIODataV4.Models.AddressType">
+                    <ReferentialConstraint Property="AddressTypeID" ReferencedProperty="AddressTypeID" />
+                </NavigationProperty>
+                <NavigationProperty Name="BusinessEntity" Type="WebAPIODataV4.Models.BusinessEntity">
+                    <ReferentialConstraint Property="BusinessEntityID" ReferencedProperty="BusinessEntityID" />
+                </NavigationProperty>
+            </EntityType>
+            <EntityType Name="BusinessEntityContact">
+                <Key>
+                    <PropertyRef Name="BusinessEntityID" />
+                    <PropertyRef Name="PersonID" />
+                    <PropertyRef Name="ContactTypeID" />
+                </Key>
+                <Property Name="BusinessEntityID" Type="Edm.Int32" />
+                <Property Name="PersonID" Type="Edm.Int32" Nullable="false" />
+                <Property Name="ContactTypeID" Type="Edm.Int32" />
+                <Property Name="rowguid" Type="Edm.Guid" Nullable="false" />
+                <Property Name="ModifiedDate" Type="Edm.DateTimeOffset" Nullable="false" />
+                <NavigationProperty Name="BusinessEntity" Type="WebAPIODataV4.Models.BusinessEntity">
+                    <ReferentialConstraint Property="BusinessEntityID" ReferencedProperty="BusinessEntityID" />
+                </NavigationProperty>
+                <NavigationProperty Name="ContactType" Type="WebAPIODataV4.Models.ContactType">
+                    <ReferentialConstraint Property="ContactTypeID" ReferencedProperty="ContactTypeID" />
+                </NavigationProperty>
+                <NavigationProperty Name="Person" Type="WebAPIODataV4.Models.Person" />
+            </EntityType>
+            <EntityType Name="ContactType">
+                <Key>
+                    <PropertyRef Name="ContactTypeID" />
+                </Key>
+                <Property Name="ContactTypeID" Type="Edm.Int32" Nullable="false" />
+                <Property Name="Name" Type="Edm.String" Nullable="false" />
+                <Property Name="ModifiedDate" Type="Edm.DateTimeOffset" Nullable="false" />
+                <NavigationProperty Name="BusinessEntityContact" Type="Collection(WebAPIODataV4.Models.BusinessEntityContact)" />
+            </EntityType>
+            <EntityType Name="CountryRegion">
+                <Key>
+                    <PropertyRef Name="CountryRegionCode" />
+                </Key>
+                <Property Name="CountryRegionCode" Type="Edm.String" Nullable="false" />
+                <Property Name="Name" Type="Edm.String" Nullable="false" />
+                <Property Name="ModifiedDate" Type="Edm.DateTimeOffset" Nullable="false" />
+                <NavigationProperty Name="StateProvince" Type="Collection(WebAPIODataV4.Models.StateProvince)" />
+            </EntityType>
+            <EntityType Name="EmailAddress">
+                <Key>
+                    <PropertyRef Name="BusinessEntityID" />
+                    <PropertyRef Name="EmailAddressID" />
+                </Key>
+                <Property Name="BusinessEntityID" Type="Edm.Int32" Nullable="false" />
+                <Property Name="EmailAddressID" Type="Edm.Int32" Nullable="false" />
+                <Property Name="EmailAddress1" Type="Edm.String" />
+                <Property Name="rowguid" Type="Edm.Guid" Nullable="false" />
+                <Property Name="ModifiedDate" Type="Edm.DateTimeOffset" Nullable="false" />
+                <NavigationProperty Name="Person" Type="WebAPIODataV4.Models.Person" />
+            </EntityType>
+            <EntityType Name="Password">
+                <Key>
+                    <PropertyRef Name="BusinessEntityID" />
+                </Key>
+                <Property Name="BusinessEntityID" Type="Edm.Int32" Nullable="false" />
+                <Property Name="PasswordHash" Type="Edm.String" Nullable="false" />
+                <Property Name="PasswordSalt" Type="Edm.String" Nullable="false" />
+                <Property Name="rowguid" Type="Edm.Guid" Nullable="false" />
+                <Property Name="ModifiedDate" Type="Edm.DateTimeOffset" Nullable="false" />
+                <NavigationProperty Name="Person" Type="WebAPIODataV4.Models.Person" />
+            </EntityType>
+            <EntityType Name="Person">
+                <Key>
+                    <PropertyRef Name="BusinessEntityID" />
+                </Key>
+                <Property Name="BusinessEntityID" Type="Edm.Int32" />
+                <Property Name="PersonType" Type="Edm.String" Nullable="false" />
+                <Property Name="NameStyle" Type="Edm.Boolean" Nullable="false" />
+                <Property Name="Title" Type="Edm.String" />
+                <Property Name="FirstName" Type="Edm.String" Nullable="false" />
+                <Property Name="MiddleName" Type="Edm.String" />
+                <Property Name="LastName" Type="Edm.String" Nullable="false" />
+                <Property Name="Suffix" Type="Edm.String" />
+                <Property Name="EmailPromotion" Type="Edm.Int32" Nullable="false" />
+                <Property Name="AdditionalContactInfo" Type="Edm.String" />
+                <Property Name="Demographics" Type="Edm.String" />
+                <Property Name="rowguid" Type="Edm.Guid" Nullable="false" />
+                <Property Name="ModifiedDate" Type="Edm.DateTimeOffset" Nullable="false" />
+                <NavigationProperty Name="BusinessEntity" Type="WebAPIODataV4.Models.BusinessEntity">
+                    <ReferentialConstraint Property="BusinessEntityID" ReferencedProperty="BusinessEntityID" />
+                </NavigationProperty>
+                <NavigationProperty Name="BusinessEntityContact" Type="Collection(WebAPIODataV4.Models.BusinessEntityContact)" />
+                <NavigationProperty Name="EmailAddress" Type="Collection(WebAPIODataV4.Models.EmailAddress)" />
+                <NavigationProperty Name="Password" Type="WebAPIODataV4.Models.Password" />
+                <NavigationProperty Name="PersonPhone" Type="Collection(WebAPIODataV4.Models.PersonPhone)" />
+            </EntityType>
+            <EntityType Name="PersonPhone">
+                <Key>
+                    <PropertyRef Name="BusinessEntityID" />
+                    <PropertyRef Name="PhoneNumber" />
+                    <PropertyRef Name="PhoneNumberTypeID" />
+                </Key>
+                <Property Name="BusinessEntityID" Type="Edm.Int32" Nullable="false" />
+                <Property Name="PhoneNumber" Type="Edm.String" Nullable="false" />
+                <Property Name="PhoneNumberTypeID" Type="Edm.Int32" />
+                <Property Name="ModifiedDate" Type="Edm.DateTimeOffset" Nullable="false" />
+                <NavigationProperty Name="Person" Type="WebAPIODataV4.Models.Person" />
+                <NavigationProperty Name="PhoneNumberType" Type="WebAPIODataV4.Models.PhoneNumberType">
+                    <ReferentialConstraint Property="PhoneNumberTypeID" ReferencedProperty="PhoneNumberTypeID" />
+                </NavigationProperty>
+            </EntityType>
+            <EntityType Name="PhoneNumberType">
+                <Key>
+                    <PropertyRef Name="PhoneNumberTypeID" />
+                </Key>
+                <Property Name="PhoneNumberTypeID" Type="Edm.Int32" Nullable="false" />
+                <Property Name="Name" Type="Edm.String" Nullable="false" />
+                <Property Name="ModifiedDate" Type="Edm.DateTimeOffset" Nullable="false" />
+                <NavigationProperty Name="PersonPhone" Type="Collection(WebAPIODataV4.Models.PersonPhone)" />
+            </EntityType>
+            <EntityType Name="StateProvince">
+                <Key>
+                    <PropertyRef Name="StateProvinceID" />
+                </Key>
+                <Property Name="StateProvinceID" Type="Edm.Int32" Nullable="false" />
+                <Property Name="StateProvinceCode" Type="Edm.String" Nullable="false" />
+                <Property Name="CountryRegionCode" Type="Edm.String" Nullable="false" />
+                <Property Name="IsOnlyStateProvinceFlag" Type="Edm.Boolean" Nullable="false" />
+                <Property Name="Name" Type="Edm.String" Nullable="false" />
+                <Property Name="TerritoryID" Type="Edm.Int32" Nullable="false" />
+                <Property Name="rowguid" Type="Edm.Guid" Nullable="false" />
+                <Property Name="ModifiedDate" Type="Edm.DateTimeOffset" Nullable="false" />
+                <NavigationProperty Name="Address" Type="Collection(WebAPIODataV4.Models.Address)" />
+                <NavigationProperty Name="CountryRegion" Type="WebAPIODataV4.Models.CountryRegion" />
+            </EntityType>
+            <EntityType Name="EntityWithEnum">
+                <Key>
+                    <PropertyRef Name="Name" />
+                </Key>
+                <Property Name="Description" Type="Edm.String" />
+                <Property Name="PhoneNumberType" Type="WebAPIODataV4.Models.PhoneNumberTypeEnum" Nullable="false" />
+                <Property Name="Name" Type="Edm.String" Nullable="false" />
+            </EntityType>
+            <EntityType Name="AnimalType">
+                <Key>
+                    <PropertyRef Name="Key" />
+                </Key>
+                <Property Name="Key" Type="Edm.Int64" Nullable="false" />
+                <Property Name="Name" Type="Edm.String" />
+                <Property Name="MeanCost" Type="Edm.Double" />
+                <NavigationProperty Name="EventData" Type="Collection(WebAPIODataV4.Models.EventData)" />
+            </EntityType>
+            <EntityType Name="EventData">
+                <Key>
+                    <PropertyRef Name="EventDataId" />
+                </Key>
+                <Property Name="EventDataId" Type="Edm.Int64" Nullable="false" />
+                <Property Name="Factor" Type="Edm.Int32" Nullable="false" />
+                <Property Name="StringTestId" Type="Edm.String" />
+                <Property Name="FixChange" Type="Edm.Double" Nullable="false" />
+                <Property Name="AnimalTypeId" Type="Edm.Int64" Nullable="false" />
+                <NavigationProperty Name="AnimalType" Type="WebAPIODataV4.Models.AnimalType" />
+            </EntityType>
+            <EntityType Name="Player">
+                <Key>
+                    <PropertyRef Name="Id" />
+                </Key>
+                <Property Name="Id" Type="Edm.Int64" Nullable="false" />
+                <Property Name="Name" Type="Edm.String" />
+                <Property Name="Email" Type="Edm.String" />
+                <NavigationProperty Name="PlayerStats" Type="WebAPIODataV4.Models.PlayerStats" ContainsTarget="true" />
+            </EntityType>
+            <EntityType Name="PlayerStats">
+                <Key>
+                    <PropertyRef Name="PlayerId" />
+                </Key>
+                <Property Name="PlayerStatsId" Type="Edm.Int64" Nullable="false" />
+                <Property Name="SkillLevel" Type="Edm.Int32" Nullable="false" />
+                <Property Name="HighScore" Type="Edm.String" />
+                <Property Name="PlayerId" Type="Edm.Int64" />
+                <NavigationProperty Name="Player" Type="WebAPIODataV4.Models.Player">
+                    <ReferentialConstraint Property="PlayerId" ReferencedProperty="Id" />
+                </NavigationProperty>
+            </EntityType>
+            <EntityType Name="SkillLevels">
+                <Key>
+                    <PropertyRef Name="Id" />
+                </Key>
+                <Property Name="Id" Type="Edm.Int32" Nullable="false" />
+                <NavigationProperty Name="Levels" Type="Collection(WebAPIODataV4.Models.SkillLevel)" ContainsTarget="true" />
+            </EntityType>
+            <EntityType Name="SkillLevel">
+                <Key>
+                    <PropertyRef Name="Level" />
+                </Key>
+                <Property Name="Level" Type="Edm.Int32" Nullable="false" />
+                <Property Name="Description" Type="Edm.String" />
+                <NavigationProperty Name="PlayerStats" Type="WebAPIODataV4.Models.PlayerStats" ContainsTarget="true" />
+            </EntityType>
+            <EnumType Name="PhoneNumberTypeEnum">
+                <Member Name="Cell" Value="1" />
+                <Member Name="Home" Value="2" />
+                <Member Name="Work" Value="3" />
+            </EnumType>
+        </Schema>
+        <Schema Namespace="System.Data.Entity.Spatial" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+            <ComplexType Name="DbGeography">
+                <Property Name="Geography" Type="System.Data.Entity.Spatial.DbGeographyWellKnownValue" />
+            </ComplexType>
+            <ComplexType Name="DbGeographyWellKnownValue">
+                <Property Name="CoordinateSystemId" Type="Edm.Int32" />
+                <Property Name="WellKnownText" Type="Edm.String" />
+                <Property Name="WellKnownBinary" Type="Edm.Binary" />
+            </ComplexType>
+        </Schema>
+        <Schema Namespace="Default" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+            <Function Name="PersonSearchPerPhoneType" IsBound="true">
+                <Parameter Name="bindingParameter" Type="Collection(WebAPIODataV4.Models.EntityWithEnum)" />
+                <Parameter Name="PhoneNumberTypeEnum" Type="WebAPIODataV4.Models.PhoneNumberTypeEnum" Nullable="false" />
+                <ReturnType Type="Collection(WebAPIODataV4.Models.EntityWithEnum)" />
+            </Function>
+            <Action Name="ChangePersonStatus" IsBound="true">
+                <Parameter Name="bindingParameter" Type="WebAPIODataV4.Models.ContactType" />
+                <Parameter Name="Level" Type="Edm.String" Unicode="false" />
+                <ReturnType Type="Edm.Boolean" Nullable="false" />
+            </Action>
+            <Action Name="ChangePersonStatus" IsBound="true">
+                <Parameter Name="bindingParameter" Type="Collection(WebAPIODataV4.Models.ContactType)" />
+                <Parameter Name="Level" Type="Edm.String" Unicode="false" />
+                <ReturnType Type="Edm.Boolean" Nullable="false" />
+            </Action>
+            <Function Name="MyFirstFunction" IsBound="true">
+                <Parameter Name="bindingParameter" Type="Collection(WebAPIODataV4.Models.Person)" />
+                <ReturnType Type="Collection(WebAPIODataV4.Models.Person)" />
+            </Function>
+            <EntityContainer Name="Container">
+                <EntitySet Name="Address" EntityType="WebAPIODataV4.Models.Address">
+                    <NavigationPropertyBinding Path="StateProvince" Target="StateProvince" />
+                    <NavigationPropertyBinding Path="BusinessEntityAddress" Target="BusinessEntityAddress" />
+                </EntitySet>
+                <EntitySet Name="AddressType" EntityType="WebAPIODataV4.Models.AddressType">
+                    <NavigationPropertyBinding Path="BusinessEntityAddress" Target="BusinessEntityAddress" />
+                </EntitySet>
+                <EntitySet Name="BusinessEntity" EntityType="WebAPIODataV4.Models.BusinessEntity">
+                    <NavigationPropertyBinding Path="BusinessEntityAddress" Target="BusinessEntityAddress" />
+                    <NavigationPropertyBinding Path="BusinessEntityContact" Target="BusinessEntityContact" />
+                    <NavigationPropertyBinding Path="Person" Target="Person" />
+                </EntitySet>
+                <EntitySet Name="BusinessEntityAddress" EntityType="WebAPIODataV4.Models.BusinessEntityAddress">
+                    <NavigationPropertyBinding Path="Address" Target="Address" />
+                    <NavigationPropertyBinding Path="AddressType" Target="AddressType" />
+                    <NavigationPropertyBinding Path="BusinessEntity" Target="BusinessEntity" />
+                </EntitySet>
+                <EntitySet Name="BusinessEntityContact" EntityType="WebAPIODataV4.Models.BusinessEntityContact">
+                    <NavigationPropertyBinding Path="BusinessEntity" Target="BusinessEntity" />
+                    <NavigationPropertyBinding Path="ContactType" Target="ContactType" />
+                    <NavigationPropertyBinding Path="Person" Target="Person" />
+                </EntitySet>
+                <EntitySet Name="ContactType" EntityType="WebAPIODataV4.Models.ContactType">
+                    <NavigationPropertyBinding Path="BusinessEntityContact" Target="BusinessEntityContact" />
+                </EntitySet>
+                <EntitySet Name="CountryRegion" EntityType="WebAPIODataV4.Models.CountryRegion">
+                    <NavigationPropertyBinding Path="StateProvince" Target="StateProvince" />
+                </EntitySet>
+                <EntitySet Name="EmailAddress" EntityType="WebAPIODataV4.Models.EmailAddress">
+                    <NavigationPropertyBinding Path="Person" Target="Person" />
+                </EntitySet>
+                <EntitySet Name="Password" EntityType="WebAPIODataV4.Models.Password">
+                    <NavigationPropertyBinding Path="Person" Target="Person" />
+                </EntitySet>
+                <EntitySet Name="Person" EntityType="WebAPIODataV4.Models.Person">
+                    <NavigationPropertyBinding Path="BusinessEntity" Target="BusinessEntity" />
+                    <NavigationPropertyBinding Path="BusinessEntityContact" Target="BusinessEntityContact" />
+                    <NavigationPropertyBinding Path="EmailAddress" Target="EmailAddress" />
+                    <NavigationPropertyBinding Path="Password" Target="Password" />
+                    <NavigationPropertyBinding Path="PersonPhone" Target="PersonPhone" />
+                </EntitySet>
+                <EntitySet Name="PersonPhone" EntityType="WebAPIODataV4.Models.PersonPhone">
+                    <NavigationPropertyBinding Path="Person" Target="Person" />
+                    <NavigationPropertyBinding Path="PhoneNumberType" Target="PhoneNumberType" />
+                </EntitySet>
+                <EntitySet Name="PhoneNumberType" EntityType="WebAPIODataV4.Models.PhoneNumberType">
+                    <NavigationPropertyBinding Path="PersonPhone" Target="PersonPhone" />
+                </EntitySet>
+                <EntitySet Name="StateProvince" EntityType="WebAPIODataV4.Models.StateProvince">
+                    <NavigationPropertyBinding Path="Address" Target="Address" />
+                    <NavigationPropertyBinding Path="CountryRegion" Target="CountryRegion" />
+                </EntitySet>
+                <EntitySet Name="EntityWithEnum" EntityType="WebAPIODataV4.Models.EntityWithEnum" />
+                <EntitySet Name="AnimalType" EntityType="WebAPIODataV4.Models.AnimalType">
+                    <NavigationPropertyBinding Path="EventData" Target="EventData" />
+                </EntitySet>
+                <EntitySet Name="EventData" EntityType="WebAPIODataV4.Models.EventData">
+                    <NavigationPropertyBinding Path="AnimalType" Target="AnimalType" />
+                </EntitySet>
+                <EntitySet Name="Player" EntityType="WebAPIODataV4.Models.Player" />
+                <Singleton Name="SkillLevels" Type="WebAPIODataV4.Models.SkillLevels" />
+            </EntityContainer>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>

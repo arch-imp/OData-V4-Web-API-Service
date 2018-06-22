@@ -78,6 +78,9 @@ namespace WebAPIODataV4
             builder.EntitySet<Player>("Player");
             builder.EntityType<PlayerStats>();
 
+            SingletonConfiguration<SkillLevels> skillLevels = builder.Singleton<SkillLevels>("SkillLevels");
+            builder.EntityType<SkillLevel>();
+
             return builder.GetEdmModel();
         }
 
