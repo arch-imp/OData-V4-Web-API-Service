@@ -3,6 +3,7 @@ using System.Web.Http;
 using System.Web.Http.Filters;
 using System.Web.OData.Builder;
 using System.Web.OData.Extensions;
+using CacheCow.Server;
 using Microsoft.OData.Edm;
 using Unity.AspNet.WebApi;
 using WebAPIODataV4.Models;
@@ -27,6 +28,9 @@ namespace WebAPIODataV4
 
             config.Count().Filter().OrderBy().Expand().Select().MaxTop(null);
             config.MapODataServiceRoute("odata", "odata", model: GetModel());
+
+            var cacheCowCacheHandler = new CachingHandler(config);
+            config.MessageHandlers.Add(cacheCowCacheHandler);
 
             return config;
         }
